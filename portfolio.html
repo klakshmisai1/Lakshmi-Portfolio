@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lakshmi Sai Kundeti — BI Analyst & Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --ink: #12100e; --paper: #faf8f5; --cream: #f0ece4;
+    --accent: #1d4e6b; --gold: #b07d3a; --muted: #7a7060;
+    --rule: #e0d9ce; --card: #edeae3;
+    --serif: 'Cormorant Garamond', serif;
+    --mono: 'IBM Plex Mono', monospace;
+    --sans: 'IBM Plex Sans', sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { background:var(--paper); color:var(--ink); font-family:var(--sans); font-weight:300; line-height:1.6; overflow-x:hidden; cursor:none; }
+
+  .cursor { width:8px;height:8px;background:var(--gold);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s; }
+  .cursor-ring { width:32px;height:32px;border:1.5px solid var(--accent);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .2s,height .2s; }
+
+  nav { position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 4rem;background:rgba(250,248,245,0.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--rule); }
+  .nav-logo { font-family:var(--serif);font-size:1.3rem;font-weight:500;color:var(--ink);text-decoration:none;letter-spacing:-.01em; }
+  .nav-logo span { color:var(--gold); }
+  .nav-links { display:flex;gap:2.5rem;list-style:none; }
+  .nav-links a { font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s;cursor:none; }
+  .nav-links a:hover { color:var(--ink); }
+  .nav-badge { font-family:var(--mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;padding:.45rem 1.2rem;background:var(--accent);color:var(--paper); }
+
+  #hero { min-height:100vh;display:grid;grid-template-columns:1fr 420px;padding-top:72px;position:relative;overflow:hidden; }
+  .hero-bg { position:absolute;right:-1rem;top:50%;transform:translateY(-50%);font-family:var(--serif);font-size:22vw;font-weight:600;color:transparent;-webkit-text-stroke:1px rgba(0,0,0,0.04);pointer-events:none;user-select:none;line-height:1;z-index:0;letter-spacing:-.04em; }
+  .hero-left { display:flex;flex-direction:column;justify-content:center;padding:5rem 3rem 5rem 4rem;position:relative;z-index:1; }
+  .eyebrow { font-family:var(--mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem;opacity:0;animation:up .6s .1s forwards; }
+  .eyebrow::before { content:'';width:28px;height:1px;background:var(--gold); }
+  .hero-name { font-family:var(--serif);font-size:clamp(3rem,5.5vw,5rem);font-weight:500;line-height:1.0;letter-spacing:-.03em;color:var(--ink);margin-bottom:.2em;opacity:0;animation:up .7s .2s forwards; }
+  .hero-name em { color:var(--accent);font-style:italic; }
+  .hero-role { font-family:var(--serif);font-size:clamp(1.2rem,2.2vw,1.7rem);font-style:italic;color:var(--muted);margin-bottom:2rem;opacity:0;animation:up .7s .3s forwards; }
+  .hero-desc { font-size:.95rem;color:#5a5248;line-height:1.85;max-width:500px;margin-bottom:2.5rem;opacity:0;animation:up .7s .4s forwards; }
+  .hero-desc strong { color:var(--ink);font-weight:500; }
+  .hero-ctas { display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:up .7s .5s forwards; }
+  .btn-solid { font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--paper);background:var(--ink);padding:.8rem 1.8rem;text-decoration:none;border:2px solid var(--ink);transition:background .2s,border-color .2s,transform .15s;cursor:none; }
+  .btn-solid:hover { background:var(--accent);border-color:var(--accent);transform:translateY(-2px); }
+  .btn-line { font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);background:transparent;padding:.8rem 1.8rem;text-decoration:none;border:2px solid var(--rule);transition:border-color .2s,transform .15s;cursor:none; }
+  .btn-line:hover { border-color:var(--ink);transform:translateY(-2px); }
+  .hero-stats { display:flex;gap:2.5rem;margin-top:3rem;padding-top:2.5rem;border-top:1px solid var(--rule);opacity:0;animation:up .7s .65s forwards; }
+  .stat-n { font-family:var(--serif);font-size:2.2rem;font-weight:500;line-height:1;color:var(--ink); }
+  .stat-n span { color:var(--gold); }
+  .stat-l { font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.2rem; }
+
+  .hero-right { display:flex;align-items:center;justify-content:center;padding:5rem 4rem 5rem 2rem;position:relative;z-index:1;opacity:0;animation:fadein 1s .4s forwards; }
+  .hero-card { width:100%;max-width:360px;background:var(--accent);padding:2.5rem;position:relative;overflow:hidden; }
+  .hero-card::before { content:'';position:absolute;inset:0;background:linear-gradient(145deg,var(--accent) 0%,#0d2f44 100%); }
+  .hero-card-grid { position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:28px 28px; }
+  .hci { position:relative;z-index:1; }
+  .card-chip { font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);border:1px solid rgba(255,255,255,.12);padding:.25rem .65rem;display:inline-block;margin-bottom:2rem; }
+  .card-title { font-family:var(--serif);font-size:1.5rem;color:rgba(255,255,255,.9);line-height:1.2;margin-bottom:2rem; }
+  .card-metrics { display:flex;flex-direction:column;gap:.9rem; }
+  .metric-row { display:flex;justify-content:space-between;align-items:center;padding:.75rem 0;border-bottom:1px solid rgba(255,255,255,.07); }
+  .metric-row:last-child { border-bottom:none; }
+  .metric-label { font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;color:rgba(255,255,255,.4);text-transform:uppercase; }
+  .metric-val { font-family:var(--serif);font-size:1.3rem;color:rgba(255,255,255,.9); }
+  .metric-val.gold { color:#d4a95a; }
+  .card-foot { margin-top:2rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.08);font-family:var(--mono);font-size:.6rem;color:rgba(255,255,255,.3);letter-spacing:.08em;text-transform:uppercase; }
+
+  section { padding:7rem 4rem; }
+  .sec-label { font-family:var(--mono);font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:.75rem;display:flex;align-items:center;gap:.75rem; }
+  .sec-label::before { content:'';width:24px;height:1px;background:var(--gold); }
+  .sec-title { font-family:var(--serif);font-size:clamp(2rem,3.5vw,3rem);font-weight:500;letter-spacing:-.03em;line-height:1.05;color:var(--ink); }
+  .sec-title em { font-style:italic;color:var(--accent); }
+
+  #about { background:var(--ink); }
+  #about .sec-label { color:#d4a95a; }
+  #about .sec-label::before { background:#d4a95a; }
+  #about .sec-title { color:var(--paper); }
+  #about .sec-title em { color:#7dd3fc; }
+  .about-grid { display:grid;grid-template-columns:1.1fr 1fr;gap:5rem;margin-top:3.5rem;align-items:start; }
+  .about-text p { font-size:.98rem;line-height:1.9;color:rgba(250,248,245,.65);margin-bottom:1.25rem; }
+  .about-text p strong { color:var(--paper);font-weight:400; }
+  .about-nums { display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.05); }
+  .hl { background:var(--ink);padding:1.5rem;transition:background .2s; }
+  .hl:hover { background:rgba(255,255,255,.03); }
+  .hl-n { font-family:var(--serif);font-size:2rem;font-weight:500;color:#d4a95a;line-height:1;margin-bottom:.3rem; }
+  .hl-d { font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(250,248,245,.3); }
+
+  #skills { background:var(--paper); }
+  .skills-intro { max-width:500px;font-size:.95rem;color:var(--muted);line-height:1.75;margin-top:1rem;margin-bottom:3.5rem; }
+  .skills-table { display:flex;flex-direction:column;gap:0;border:1.5px solid var(--rule); }
+  .s-row { display:grid;grid-template-columns:220px 1fr;border-bottom:1px solid var(--rule); }
+  .s-row:last-child { border-bottom:none; }
+  .s-head { padding:1.6rem 2rem;background:var(--cream);border-right:1px solid var(--rule);display:flex;flex-direction:column;justify-content:center; }
+  .s-head span { font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:.35rem; }
+  .s-head h4 { font-family:var(--serif);font-size:1.1rem;font-weight:500;color:var(--ink); }
+  .s-body { padding:1.6rem 2rem;display:flex;flex-wrap:wrap;gap:.5rem;align-items:center; }
+  .tag { font-family:var(--mono);font-size:.63rem;letter-spacing:.04em;padding:.3rem .75rem;border:1px solid var(--rule);color:var(--muted);transition:border-color .2s,color .2s,background .2s; }
+  .tag:hover { border-color:var(--accent);color:var(--accent);background:rgba(29,78,107,.05); }
+  .tag.hot { border-color:var(--accent);color:var(--accent);background:rgba(29,78,107,.06); }
+
+  #experience { background:var(--cream); }
+  .exp-list { margin-top:3.5rem;display:flex;flex-direction:column; }
+  .exp-item { display:grid;grid-template-columns:160px 1fr;gap:2.5rem;padding:3rem 0;border-bottom:1px solid var(--rule); }
+  .exp-item:last-child { border-bottom:none; }
+  .exp-period { font-family:var(--mono);font-size:.65rem;letter-spacing:.08em;color:var(--muted);margin-bottom:.5rem; }
+  .exp-company { font-family:var(--serif);font-size:1.3rem;font-weight:500;color:var(--ink); }
+  .exp-loc { font-family:var(--mono);font-size:.6rem;letter-spacing:.06em;color:var(--muted);margin-top:.2rem; }
+  .exp-role { font-family:var(--serif);font-size:1.55rem;font-style:italic;color:var(--accent);margin-bottom:1rem;font-weight:400; }
+  .exp-bullets { list-style:none;display:flex;flex-direction:column;gap:.6rem; }
+  .exp-bullets li { font-size:.88rem;color:#5a5248;line-height:1.7;padding-left:1.25rem;position:relative; }
+  .exp-bullets li::before { content:'—';position:absolute;left:0;color:var(--gold); }
+  .exp-bullets li strong { color:var(--ink);font-weight:500; }
+
+  #project { background:var(--paper); }
+  .proj-block { margin-top:3.5rem;display:grid;grid-template-columns:1fr 1fr;gap:0;border:1.5px solid var(--rule); }
+  .proj-visual { background:var(--accent);padding:3rem;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;min-height:320px; }
+  .proj-visual::before { content:'';position:absolute;inset:0;background:linear-gradient(145deg,var(--accent) 0%,#0b2438 100%); }
+  .proj-grid { position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:24px 24px; }
+  .proj-chart { position:relative;z-index:1; }
+  .proj-info { background:var(--paper);padding:3rem; }
+  .proj-label { font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem; }
+  .proj-title { font-family:var(--serif);font-size:1.8rem;font-weight:500;letter-spacing:-.02em;color:var(--ink);line-height:1.15;margin-bottom:.75rem; }
+  .proj-org { font-family:var(--mono);font-size:.68rem;color:var(--accent);margin-bottom:1.25rem;letter-spacing:.04em; }
+  .proj-desc { font-size:.88rem;color:var(--muted);line-height:1.75;margin-bottom:1.5rem; }
+  .proj-tags { display:flex;flex-wrap:wrap;gap:.4rem; }
+
+  #education { background:var(--ink); }
+  #education .sec-label { color:#d4a95a; }
+  #education .sec-label::before { background:#d4a95a; }
+  #education .sec-title { color:var(--paper); }
+  #education .sec-title em { color:#7dd3fc; }
+  .edu-grid { display:grid;grid-template-columns:1fr 1fr;gap:2px;background:rgba(255,255,255,.05);margin-top:3.5rem; }
+  .edu-cell { background:var(--ink);padding:2.5rem;transition:background .2s; }
+  .edu-cell:hover { background:rgba(255,255,255,.03); }
+  .edu-cell-label { font-family:var(--mono);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:1rem; }
+  .edu-cell h3 { font-family:var(--serif);font-size:1.5rem;font-weight:500;color:var(--paper);line-height:1.2;margin-bottom:.4rem; }
+  .edu-inst { font-family:var(--mono);font-size:.7rem;color:#7dd3fc;margin-bottom:.5rem; }
+  .edu-period { font-family:var(--mono);font-size:.65rem;color:rgba(255,255,255,.3); }
+  .edu-cell p { font-size:.85rem;color:rgba(255,255,255,.45);line-height:1.7;margin-top:.75rem; }
+  .edu-item { font-family:var(--mono);font-size:.68rem;color:rgba(250,248,245,.5);padding:.65rem 1rem;border:1px solid rgba(255,255,255,.06);margin-bottom:.5rem; }
+
+  #contact { background:var(--accent);text-align:center;padding:7rem 4rem; }
+  #contact .sec-label { color:#d4a95a;justify-content:center; }
+  #contact .sec-label::before { background:#d4a95a; }
+  #contact .sec-title { color:var(--paper); }
+  #contact .sec-title em { color:#7dd3fc; }
+  .contact-sub { font-size:.95rem;color:rgba(250,248,245,.55);margin:1rem auto 3rem;max-width:420px;line-height:1.75; }
+  .contact-email { font-family:var(--serif);font-size:clamp(1.4rem,3vw,2.3rem);font-weight:500;color:var(--paper);text-decoration:none;border-bottom:2px solid rgba(255,255,255,.2);padding-bottom:.2rem;transition:border-color .2s,color .2s;cursor:none; }
+  .contact-email:hover { border-color:#d4a95a;color:#d4a95a; }
+  .contact-row { display:flex;gap:1.5rem;justify-content:center;margin-top:2.5rem;flex-wrap:wrap; }
+  .contact-link { font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(250,248,245,.4);text-decoration:none;transition:color .2s;cursor:none; }
+  .contact-link:hover { color:var(--paper); }
+  .sep { color:rgba(250,248,245,.15);font-family:var(--mono);font-size:.65rem; }
+
+  footer { background:var(--ink);padding:2rem 4rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,.05); }
+  footer p { font-family:var(--mono);font-size:.62rem;color:rgba(250,248,245,.25); }
+  .footer-name { font-family:var(--serif);font-size:1.05rem;color:rgba(250,248,245,.4); }
+
+  .reveal { opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease; }
+  .reveal.visible { opacity:1;transform:none; }
+
+  @keyframes up { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:none} }
+  @keyframes fadein { from{opacity:0} to{opacity:1} }
+
+  @media(max-width:900px){
+    nav { padding:1rem 2rem; }
+    .nav-links { display:none; }
+    section { padding:5rem 2rem; }
+    #hero { grid-template-columns:1fr; }
+    .hero-left { padding:4rem 2rem; }
+    .hero-right { display:none; }
+    .about-grid,.proj-block,.edu-grid { grid-template-columns:1fr; }
+    .s-row { grid-template-columns:1fr; }
+    .s-head { border-right:none;border-bottom:1px solid var(--rule); }
+    .exp-item { grid-template-columns:1fr;gap:1rem; }
+    footer { flex-direction:column;gap:1rem;text-align:center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<nav>
+  <a href="#hero" class="nav-logo">Lakshmi<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#project">Project</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-badge">Open to Work</div>
+</nav>
+
+<section id="hero">
+  <div class="hero-bg">BI</div>
+  <div class="hero-left">
+    <div class="eyebrow">Business Intelligence · Data Analytics</div>
+    <h1 class="hero-name">Lakshmi Sai<br><em>Kundeti</em></h1>
+    <p class="hero-role">BI Analyst & Developer</p>
+    <p class="hero-desc">
+      <strong>4+ years of experience</strong> in healthcare and product analytics — transforming massive datasets into clear, actionable insights. Specializing in SQL, Power BI, Tableau, and cloud data warehousing at scale.
+    </p>
+    <div class="hero-ctas">
+      <a href="#experience" class="btn-solid">View Experience</a>
+      <a href="#contact" class="btn-line">Get In Touch</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-n">4<span>+</span></div><div class="stat-l">Years exp.</div></div>
+      <div><div class="stat-n">100M<span>+</span></div><div class="stat-l">Monthly records</div></div>
+      <div><div class="stat-n">40<span>%</span></div><div class="stat-l">Query speedup</div></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-card">
+      <div class="hero-card-grid"></div>
+      <div class="hci">
+        <div class="card-chip">Impact Snapshot</div>
+        <div class="card-title">Turning raw data into real decisions</div>
+        <div class="card-metrics">
+          <div class="metric-row"><span class="metric-label">Daily records at Meta</span><span class="metric-val gold">50M+</span></div>
+          <div class="metric-row"><span class="metric-label">SQL query time reduced</span><span class="metric-val">40%</span></div>
+          <div class="metric-row"><span class="metric-label">Manual effort reduced</span><span class="metric-val">45%</span></div>
+          <div class="metric-row"><span class="metric-label">Current employer</span><span class="metric-val gold">Meta</span></div>
+        </div>
+        <div class="card-foot">Kansas City, USA · Available now</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="sec-label">Who I am</div>
+  <h2 class="sec-title">Data-driven analyst,<br><em>impact-obsessed</em></h2>
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>I'm a <strong>Business Intelligence Analyst and Developer</strong> with 4+ years of hands-on experience across healthcare and product analytics. I've built the dashboards, data models, and SQL pipelines that turn 100M+ records into clear operational decisions.</p>
+      <p>Currently at <strong>Meta</strong>, I support BI reporting for product and operational datasets exceeding 50M daily records — building Power BI dashboards and Amazon Redshift models that help Product, Operations, and Finance move faster.</p>
+      <p>I care deeply about <strong>data quality, query performance, and the story behind the numbers</strong>. Whether optimizing a slow query, designing a clean star schema, or surfacing a meaningful KPI trend — I bring the same standard of rigor to every deliverable.</p>
+    </div>
+    <div class="about-nums reveal">
+      <div class="hl"><div class="hl-n">50M+</div><div class="hl-d">Daily records at Meta</div></div>
+      <div class="hl"><div class="hl-n">100M+</div><div class="hl-d">Monthly healthcare data</div></div>
+      <div class="hl"><div class="hl-n">40%</div><div class="hl-d">SQL query time cut</div></div>
+      <div class="hl"><div class="hl-n">45%</div><div class="hl-d">Manual effort reduced</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="sec-label">Capabilities</div>
+  <h2 class="sec-title">Technical <em>toolkit</em></h2>
+  <p class="skills-intro">A full BI skill set — from data modeling and advanced SQL to interactive visualization and cloud-scale warehousing.</p>
+  <div class="skills-table reveal">
+    <div class="s-row">
+      <div class="s-head"><span>01</span><h4>SQL & Querying</h4></div>
+      <div class="s-body"><span class="tag hot">SQL</span><span class="tag hot">CTEs</span><span class="tag hot">Window Functions</span><span class="tag hot">Joins & Aggregations</span><span class="tag">Query Optimization</span></div>
+    </div>
+    <div class="s-row">
+      <div class="s-head"><span>02</span><h4>Data Visualization</h4></div>
+      <div class="s-body"><span class="tag hot">Power BI</span><span class="tag hot">Tableau</span><span class="tag hot">DAX</span><span class="tag">Dashboard Development</span><span class="tag">KPI Reporting</span></div>
+    </div>
+    <div class="s-row">
+      <div class="s-head"><span>03</span><h4>Data Warehousing</h4></div>
+      <div class="s-body"><span class="tag hot">Amazon Redshift</span><span class="tag hot">PostgreSQL</span><span class="tag">Oracle</span><span class="tag">Star Schema</span><span class="tag">Dimensional Modeling</span><span class="tag">Data Mart Design</span></div>
+    </div>
+    <div class="s-row">
+      <div class="s-head"><span>04</span><h4>Analysis</h4></div>
+      <div class="s-body"><span class="tag hot">Cohort Analysis</span><span class="tag hot">Trend Analysis</span><span class="tag">Variance Analysis</span><span class="tag">EDA</span><span class="tag">Ad-hoc Reporting</span></div>
+    </div>
+    <div class="s-row">
+      <div class="s-head"><span>05</span><h4>ETL & Data Quality</h4></div>
+      <div class="s-body"><span class="tag">Data Pipelines</span><span class="tag">Data Validation</span><span class="tag">Data Reconciliation</span><span class="tag">ETL</span><span class="tag">Python (Pandas)</span></div>
+    </div>
+    <div class="s-row">
+      <div class="s-head"><span>06</span><h4>Tools</h4></div>
+      <div class="s-body"><span class="tag">Microsoft Excel</span><span class="tag">Git</span><span class="tag">Operational Reporting</span><span class="tag">Business Insights</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="sec-label">Experience</div>
+  <h2 class="sec-title">Where I've <em>worked</em></h2>
+  <div class="exp-list">
+    <div class="exp-item reveal">
+      <div>
+        <div class="exp-period">June 2025 — Present</div>
+        <div class="exp-company">Meta</div>
+        <div class="exp-loc">USA</div>
+      </div>
+      <div>
+        <div class="exp-role">Business Intelligence Developer</div>
+        <ul class="exp-bullets">
+          <li>Supported BI reporting and analytics for product and operational datasets <strong>exceeding 50M daily records</strong>, enabling KPI tracking across business teams.</li>
+          <li>Developed data models and reporting layers in <strong>Amazon Redshift</strong>, improving dashboard performance and ensuring scalable data availability.</li>
+          <li>Built interactive <strong>Power BI dashboards using DAX</strong> to track user engagement, feature usage, and operational KPIs.</li>
+          <li>Wrote and optimized SQL queries (joins, aggregations, CTEs) to support reporting and improve query performance across datasets.</li>
+          <li>Automated recurring reports using SQL and scheduled refresh processes, <strong>reducing manual effort</strong> and improving consistency across reporting workflows.</li>
+          <li>Performed cohort, trend, and variance analysis; implemented data validation and reconciliation checks to ensure accuracy.</li>
+          <li>Collaborated with Product, Operations, and Finance to gather requirements and support KPI reporting at scale.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item reveal">
+      <div>
+        <div class="exp-period">July 2020 — Nov 2023</div>
+        <div class="exp-company">Mphasis</div>
+        <div class="exp-loc">India</div>
+      </div>
+      <div>
+        <div class="exp-role">Business Intelligence Analyst</div>
+        <ul class="exp-bullets">
+          <li>Analyzed <strong>100M+ monthly healthcare datasets</strong> using SQL and BI tools, supporting KPI tracking, revenue cycle reporting, and operational decision-making.</li>
+          <li>Developed interactive dashboards in <strong>Power BI and Tableau</strong> to track SLA performance, financial metrics, and operational KPIs for stakeholders.</li>
+          <li>Designed dimensional data models using <strong>star schema</strong> for reporting data marts, improving dashboard performance and scalability.</li>
+          <li>Optimized SQL queries across PostgreSQL and Oracle, <strong>reducing execution time by 40%</strong> for large-scale analytical workloads.</li>
+          <li>Automated recurring reporting processes using SQL and scripting, <strong>reducing manual effort by 45%</strong> and improving turnaround time.</li>
+          <li>Performed trend, cohort, and variance analysis to identify operational patterns and support business decisions.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="project">
+  <div class="sec-label">Project</div>
+  <h2 class="sec-title">Featured <em>work</em></h2>
+  <div class="proj-block reveal">
+    <div class="proj-visual">
+      <div class="proj-grid"></div>
+      <div class="proj-chart">
+        <svg width="280" height="200" viewBox="0 0 280 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="20" y="140" width="28" height="40" fill="rgba(255,255,255,0.1)"/>
+          <rect x="58" y="115" width="28" height="65" fill="rgba(255,255,255,0.15)"/>
+          <rect x="96" y="85" width="28" height="95" fill="rgba(212,169,90,0.45)"/>
+          <rect x="134" y="60" width="28" height="120" fill="rgba(212,169,90,0.65)"/>
+          <rect x="172" y="42" width="28" height="138" fill="rgba(212,169,90,0.85)"/>
+          <rect x="210" y="72" width="28" height="108" fill="rgba(255,255,255,0.22)"/>
+          <polyline points="34,135 72,110 110,80 148,55 186,38 224,67" stroke="rgba(255,255,255,0.55)" stroke-width="2" fill="none" stroke-dasharray="4,3"/>
+          <line x1="10" y1="180" x2="260" y2="180" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+          <line x1="10" y1="20" x2="10" y2="180" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
+          <text x="140" y="197" fill="rgba(255,255,255,0.25)" font-size="9" text-anchor="middle" font-family="monospace">KPI Performance Trend</text>
+        </svg>
+      </div>
+    </div>
+    <div class="proj-info">
+      <div class="proj-label">Academic Project · Jan 2025 — May 2025</div>
+      <h3 class="proj-title">Healthcare Data Analytics & Reporting System</h3>
+      <div class="proj-org">University of Central Missouri</div>
+      <p class="proj-desc">Designed and developed a full healthcare analytics solution analyzing 10M+ simulated records. Built interactive Power BI dashboards, star schema dimensional models, and optimized SQL workflows to support KPI tracking and operational reporting. Implemented ETL pipelines with data validation, EDA, cohort, and trend analysis end-to-end.</p>
+      <div class="proj-tags">
+        <span class="tag hot">SQL</span><span class="tag hot">Power BI</span><span class="tag">Star Schema</span><span class="tag">ETL</span><span class="tag">EDA</span><span class="tag">Cohort Analysis</span><span class="tag">Data Validation</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="sec-label">Education</div>
+  <h2 class="sec-title">Academic <em>foundation</em></h2>
+  <div class="edu-grid reveal">
+    <div class="edu-cell">
+      <div class="edu-cell-label">Graduate Degree</div>
+      <h3>Master of Science<br>in Computer Science</h3>
+      <div class="edu-inst">University of Central Missouri</div>
+      <div class="edu-period">Jan 2024 — Dec 2025 · Missouri, USA</div>
+      <p>Graduate studies bridging strong CS fundamentals with applied data analytics, database systems, and software engineering practices.</p>
+    </div>
+    <div class="edu-cell" style="display:flex;flex-direction:column;justify-content:center;">
+      <div class="edu-cell-label">Core competencies</div>
+      <div style="margin-top:.5rem;">
+        <div class="edu-item">Data Structures & Algorithms</div>
+        <div class="edu-item">Database Systems & Design</div>
+        <div class="edu-item">Data Analytics & Visualization</div>
+        <div class="edu-item">Software Engineering Practices</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="sec-label">Get in touch</div>
+  <h2 class="sec-title">Let's build something<br><em>data-driven</em></h2>
+  <p class="contact-sub">Actively seeking new opportunities in BI, data analytics, and data engineering. Based in Kansas City — open to remote and hybrid roles.</p>
+  <a href="mailto:lakshmiSaiKundeti@gmail.com" class="contact-email">lakshmiSaiKundeti@gmail.com</a>
+  <div class="contact-row">
+    <a href="https://www.linkedin.com/in/kundeti-lakshmi-sai-00b820178/" target="_blank" class="contact-link">LinkedIn</a>
+    <span class="sep">·</span>
+    <span class="contact-link" style="cursor:default;">+1 (913) 212-5442</span>
+    <span class="sep">·</span>
+    <a href="#" class="contact-link" onclick="alert('Add your resume PDF link here!');return false;">Download Resume</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-name">Lakshmi Sai Kundeti</div>
+  <p>© 2026 · BI Analyst & Developer · Kansas City, USA</p>
+</footer>
+
+<script>
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+  (function animate(){
+    rx+=(mx-rx)*.12;ry+=(my-ry)*.12;
+    cursor.style.left=mx+'px';cursor.style.top=my+'px';
+    ring.style.left=rx+'px';ring.style.top=ry+'px';
+    requestAnimationFrame(animate);
+  })();
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach((e,i)=>{
+      if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*90);obs.unobserve(e.target);}
+    });
+  },{threshold:.08});
+  document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
+</script>
+</body>
+</html>
